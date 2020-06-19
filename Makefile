@@ -11,14 +11,14 @@ all:	$(SUBS)
 
 .PHONY:	$(SUBS)
 $(SUBS):	Makefile
-	echo $(MAKE) -C '$@'
+	$(MAKE) -C '$@'
 
 .PHONY:	clean
 clean:	$(CLEANS)
 
 .PHONY:	$(CLEANS)
 $(CLEANS):
-	echo $(MAKE) -C '$@' clean
+	$(MAKE) -C '$@' clean
 
 .PHONY:	push
 push:
