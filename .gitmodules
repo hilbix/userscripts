@@ -1,0 +1,4 @@
+[submodule "gm"]
+	path = gm
+	url = ./
+	branch = gm
