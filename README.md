@@ -17,11 +17,16 @@ Note that submodules might contain additional submodules, so be sure to use `--r
 
 The `master` branch is used to update everything:
 
-	git clone --recursive https://github.com/hilbix/userscripts.git
+	git clone --recursive https://github.com/hilbix/userscripts/
 	cd userscripts
 	# edit
 	make
 	make push
+
+Important note:
+
+- Do not use something like `https://github.com/hilbix/userscripts.git` nor `git@github.com:` above,
+  else things fail catastrophically with no clear sign why.  It simply does not work.  You have been warned.
 
 If you cloned the Repo:
 
@@ -32,15 +37,21 @@ If you cloned the Repo:
 
 If you are puzzled how to push using `https://`-URLs, you can use following `git`-magic:
 
-	git config --global url.git@github.com:YOURACCOUNT/usersripts.git.insteadOf https://github.com/YOURACCOUNT/userscripts.git
+	git config --global url.git@github.com:YOURACCOUNT/usersripts.git.insteadOf https://github.com/YOURACCOUNT/userscripts/`
 
-If your `ssh`-key is in your account, you can use a bit more simple variant:
+If your `ssh`-key is in your account, you probably can use a bit more simple variant:
 
 	git config --global url.git@github.com:YOURACCOUNT/.insteadOf https://github.com/YOURACCOUNT/
 
 - This replaces all GH-`https://`-URLs to your account with the `ssh`-URLs
-- I firmly do not recommend this for security reasons.
-  Instead I use per-repository `ssh`-keys based on writable deployment keys.
+- As my GH setup is incompatible with this I cannot test it myself.  So perhaps it does not work.  Then please use the above variant instead.
+
+I refuse to ever support such a security nightmare like a global `ssh`-key with unrestricted write access
+to my GH-account.
+
+Instead I use per-repository `ssh`-keys based on (per-need writable) deployment keys which is much more secure (as a machine only has a per-needed access to few repos) in case one of my gazillions machines got hacked.
+
+Write keys either need 2nd factor or must be separate managable.  GH supports the latter.  (Note that 2nd factor must be supported on console-less background deplyment tasks also, which isn't the case everywhere.)  Additionally GH expires unused keys from time to time, which adds to security as well.  Get used to it, always think of security first.
 
 
 ## FAQ
